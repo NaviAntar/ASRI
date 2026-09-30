@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Absensi ASRI</title>
+<title>Presensi ASRI</title>
 <meta name="theme-color" content="#FFFFFF">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" type="image/png" href="icons/favicon-64.png">
-<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="favicon-64.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Absensi ASRI">
+<meta name="apple-mobile-web-app-title" content="Presensi ASRI">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
 <script>
@@ -22,7 +22,7 @@
 
   const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
   const siap = !APP_URL.includes('GANTI_DENGAN');
-  // Dibuka dari ikon di layar utama → langsung masuk ke aplikasi absensi
+  // Dibuka dari ikon di layar utama → langsung masuk ke aplikasi presensi
   if (standalone && siap) location.replace(APP_URL);
 </script>
 <style>
@@ -57,8 +57,8 @@
 <main>
   <div class="warn" id="warn">URL web app belum diisi. Buka file index.html lalu isi <b>APP_URL</b>.</div>
   <div class="app">
-    <img src="icons/icon-192.png" alt="">
-    <div><h1>Absensi ASRI</h1><p>Clock in/out dengan foto &amp; lokasi</p></div>
+    <img src="data:image/png;base64,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" alt="Presensi ASRI">
+    <div><h1>Presensi ASRI</h1><p>Clock in/out dengan foto &amp; lokasi</p></div>
   </div>
 
   <a class="open" id="open" href="#">Buka aplikasi</a>
@@ -70,7 +70,7 @@
       <li><span>Buka halaman ini di <b>Safari</b> (bukan di dalam WhatsApp/Instagram).</span></li>
       <li><span>Ketuk tombol <b class="k">Bagikan</b> (kotak dengan panah ke atas) di bawah layar.</span></li>
       <li><span>Pilih <b class="k">Tambah ke Layar Utama</b> / <b class="k">Add to Home Screen</b>, lalu <b>Tambah</b>.</span></li>
-      <li><span>Buka dari ikon <b>Absensi ASRI</b> yang muncul di layar utama.</span></li>
+      <li><span>Buka dari ikon <b>Presensi ASRI</b> yang muncul di layar utama.</span></li>
     </ol>
   </div>
   <div class="guide" id="g-android">
@@ -78,7 +78,7 @@
     <ol>
       <li><span>Buka halaman ini di <b>Chrome</b>.</span></li>
       <li><span>Ketuk <b>Pasang di layar utama</b> di atas. Kalau tombolnya tidak muncul: menu <b class="k">⋮</b> → <b class="k">Instal aplikasi</b> / <b class="k">Tambahkan ke Layar utama</b> → <b>Instal</b>.</span></li>
-      <li><span>Buka dari ikon <b>Absensi ASRI</b> di layar utama atau laci aplikasi.</span></li>
+      <li><span>Buka dari ikon <b>Presensi ASRI</b> di layar utama atau laci aplikasi.</span></li>
     </ol>
   </div>
 
