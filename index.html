@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Absensi ASRI</title>
+<meta name="theme-color" content="#FFFFFF">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-64.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Absensi ASRI">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet">
+<script>
+  /* ================================================================
+     GANTI dengan URL web app Apps Script (Deploy → Manage deployments,
+     salin URL yang berakhiran /exec).
+     ================================================================ */
+  const APP_URL = 'https://script.google.com/macros/s/GANTI_DENGAN_ID_DEPLOYMENT/exec';
+
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const siap = !APP_URL.includes('GANTI_DENGAN');
+  // Dibuka dari ikon di layar utama → langsung masuk ke aplikasi absensi
+  if (standalone && siap) location.replace(APP_URL);
+</script>
+<style>
+  :root{--green:#4BA046;--red:#E2233E;--yellow:#F9C316;--blue:#26BDE5;--ink:#1F2623;--muted:#6B7470;--line:#E3E8E5;--soft:#F4F7F5}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:#fff;color:var(--ink);font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .stripe{display:grid;grid-template-columns:repeat(4,1fr);height:4px}
+  .stripe i:nth-child(1){background:var(--green)}.stripe i:nth-child(2){background:var(--red)}
+  .stripe i:nth-child(3){background:var(--yellow)}.stripe i:nth-child(4){background:var(--blue)}
+  main{max-width:480px;margin:0 auto;padding:calc(36px + env(safe-area-inset-top,0px)) 24px calc(32px + env(safe-area-inset-bottom,0px))}
+  .app{display:flex;align-items:center;gap:16px;margin-bottom:28px}
+  .app img{width:72px;height:72px;border-radius:18px;box-shadow:0 0 0 1px var(--line),0 6px 18px rgba(31,38,35,.08)}
+  .app h1{font-size:22px;margin:0;font-weight:800}.app p{margin:2px 0 0;color:var(--muted);font-size:14px}
+  .open{display:block;width:100%;text-align:center;text-decoration:none;background:var(--green);color:#fff;font-weight:800;font-size:17px;
+        padding:17px;border-radius:18px;box-shadow:0 5px 0 #3B8537;border:0;font-family:inherit}
+  .open:active{transform:translateY(3px);box-shadow:0 2px 0 #3B8537}
+  .install{margin-top:12px;background:#fff;color:var(--ink);box-shadow:none;border:1.5px solid var(--ink);display:none}
+  .install.on{display:block}
+  h2{font-size:16px;margin:32px 0 12px}
+  ol{margin:0;padding:0;list-style:none;counter-reset:s}
+  ol li{counter-increment:s;display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line);font-size:15px;line-height:1.45}
+  ol li::before{content:counter(s);flex:none;width:26px;height:26px;border-radius:50%;background:var(--soft);display:grid;place-items:center;font-weight:800;font-size:13px}
+  .guide{display:none}.guide.on{display:block}
+  .note{margin-top:24px;font-size:13px;color:var(--muted);line-height:1.5}
+  .warn{background:#FEF4D6;color:#7A5B00;border-radius:12px;padding:12px 14px;font-size:14px;margin-bottom:16px;display:none}
+  .warn.on{display:block}
+  b.k{background:var(--soft);padding:1px 6px;border-radius:6px;font-weight:700}
+</style>
+</head>
+<body>
+<div class="stripe"><i></i><i></i><i></i><i></i></div>
+<main>
+  <div class="warn" id="warn">URL web app belum diisi. Buka file index.html lalu isi <b>APP_URL</b>.</div>
+  <div class="app">
+    <img src="icons/icon-192.png" alt="">
+    <div><h1>Absensi ASRI</h1><p>Clock in/out dengan foto &amp; lokasi</p></div>
+  </div>
+
+  <a class="open" id="open" href="#">Buka aplikasi</a>
+  <button class="open install" id="install">Pasang di layar utama</button>
+
+  <div class="guide" id="g-ios">
+    <h2>Pasang di iPhone</h2>
+    <ol>
+      <li><span>Buka halaman ini di <b>Safari</b> (bukan di dalam WhatsApp/Instagram).</span></li>
+      <li><span>Ketuk tombol <b class="k">Bagikan</b> (kotak dengan panah ke atas) di bawah layar.</span></li>
+      <li><span>Pilih <b class="k">Tambah ke Layar Utama</b> / <b class="k">Add to Home Screen</b>, lalu <b>Tambah</b>.</span></li>
+      <li><span>Buka dari ikon <b>Absensi ASRI</b> yang muncul di layar utama.</span></li>
+    </ol>
+  </div>
+  <div class="guide" id="g-android">
+    <h2>Pasang di Android</h2>
+    <ol>
+      <li><span>Buka halaman ini di <b>Chrome</b>.</span></li>
+      <li><span>Ketuk <b>Pasang di layar utama</b> di atas. Kalau tombolnya tidak muncul: menu <b class="k">⋮</b> → <b class="k">Instal aplikasi</b> / <b class="k">Tambahkan ke Layar utama</b> → <b>Instal</b>.</span></li>
+      <li><span>Buka dari ikon <b>Absensi ASRI</b> di layar utama atau laci aplikasi.</span></li>
+    </ol>
+  </div>
+
+  <p class="note">Saat pertama dibuka dari ikon, kamu mungkin diminta masuk ke akun Google sekali. Izinkan juga akses lokasi dan kamera agar absen bisa berjalan.</p>
+</main>
+<script>
+  if (!siap) document.getElementById('warn').classList.add('on');
+  document.getElementById('open').href = siap ? APP_URL : '#';
+
+  const ua = navigator.userAgent;
+  const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  document.getElementById(ios ? 'g-ios' : 'g-android').classList.add('on');
+
+  let promptEvt = null;
+  addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); promptEvt = e;
+    document.getElementById('install').classList.add('on');
+  });
+  document.getElementById('install').onclick = async () => {
+    if (!promptEvt) return;
+    promptEvt.prompt(); await promptEvt.userChoice; promptEvt = null;
+    document.getElementById('install').classList.remove('on');
+  };
+  addEventListener('appinstalled', () => document.getElementById('install').classList.remove('on'));
+
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
+</script>
+</body>
+</html>

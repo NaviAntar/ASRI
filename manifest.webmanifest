@@ -1,0 +1,16 @@
+{
+  "name": "Absensi ASRI",
+  "short_name": "Absensi ASRI",
+  "description": "Absensi Project Manager ASRI — clock in/out dengan foto dan lokasi.",
+  "lang": "id",
+  "start_url": "./?source=app",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
